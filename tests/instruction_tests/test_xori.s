@@ -1,0 +1,4 @@
+li sp, 0
+li t0, 0xff
+xori t0, t0, 0xf
+
