@@ -1,6 +1,7 @@
 flags = -Werror -Wall
 
 all:
+	mkdir -p build
 	gcc $(flags) ./src/frontend.c ./src/core.c -o ./build/rv
 
 clean:

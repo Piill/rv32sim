@@ -109,7 +109,7 @@ void print_machine(machine_t* machine) {
         instruction_t inst = decode(machine,
                 get_word(machine, addr));
         inst_string(inst, inst_s);
-        printf("%c %02x : %-30s \t %d: %x\n",
+        printf("%c %3x : %-30s \t %d: %x\n",
                 line_start, addr,
                 inst_s,i, machine->reg[i]);
 
@@ -242,7 +242,7 @@ void inst_string(instruction_t inst, char* s) {
             inst.funct3 == 0 && inst.funct7 == 0) {
         //ecall
         strcpy(opcode, "ecall");
-        sprintf(s, "%-5s %8x\t", opcode, inst.imm);
+        sprintf(s, "%-5s", opcode);
     } else if(inst.opcode == OPCODE_LUI) {
         //lui
         strcpy(opcode, "lui");
