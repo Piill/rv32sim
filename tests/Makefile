@@ -34,4 +34,4 @@ task3:
 	 $(asm) -R -c ./task3/mult.s -o ./task3/mult.o
 	riscv32-unknown-elf-objcopy ./task3/mult.o --dump-section .text=./task3/mult.bin
 	../build/rv -f ./task3/loop.bin -o ./task3/loop.out
-	../build/rv -f ./task3/mult.bin -o ./task3/mult.out -s
+	../build/rv -f ./task3/mult.bin -o ./task3/mult.out

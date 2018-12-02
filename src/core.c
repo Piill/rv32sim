@@ -1,17 +1,12 @@
 #include "frontend.h"
 #include "core.h"
 
-void initialize(machine_t* machine) {
-    machine->reg[SP] = MEM_SIZE-1;
-}
 
 void cycle(machine_t* machine) {
   uint32_t raw = fetch(machine);
   instruction_t inst = decode(machine, raw);
   execute(machine, &inst);
   machine->reg[0] = 0;
-  memory_access(machine);
-  write_back(machine);
   if(machine->PC > machine->last_address
           && machine->last_address > 0) {
     machine->is_running = 0;
@@ -269,11 +264,4 @@ void execute(machine_t* machine, instruction_t* inst) {
     }
 }
 
-void memory_access(machine_t* machine) {
-
-}
-
-void write_back(machine_t* machine) {
-
-}
 

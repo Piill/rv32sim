@@ -4,7 +4,9 @@ settings_t settings;
 int main(int argc, char** argv) {
     load_settings(argc, argv);
     load_regs();
-    initialize(&settings.machine);
+    if(settings.use_stack == 1) {
+        settings.machine.reg[SP] = MEM_SIZE-1;
+    }
     load_program();
 
 
@@ -265,9 +267,6 @@ void inst_string(instruction_t inst, char* s) {
 int write_out(machine_t* machine) {
     if(settings.filename_out[0] == '\0') {
         return -1;
-    }
-    if(settings.use_stack == 1) {
-        settings.machine.reg[SP] = 0;
     }
     FILE* fp = fopen(settings.filename_out, "wb");
     if(fp == NULL) {

@@ -56,17 +56,12 @@ typedef struct {
     uint32_t rd;
 } instruction_t;
 
-void initialize(machine_t*);
 
 uint32_t fetch(machine_t*);
+uint32_t get_word(machine_t*, uint32_t);
 instruction_t decode(machine_t*, uint32_t);
 void execute(machine_t*, instruction_t*);
-void memory_access(machine_t*);
-void write_back(machine_t*);
 
 void cycle(machine_t*);
-
-uint32_t get_word(machine_t*, uint32_t);
-
 
 #endif
